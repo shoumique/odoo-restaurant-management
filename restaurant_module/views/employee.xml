@@ -1,0 +1,39 @@
+<odoo>
+
+    
+    
+    
+    <record id="employee_action" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Who's your first Employee ?
+            </p>
+        </field>
+    </record>
+    
+    
+    
+    
+    
+    
+    <menuitem id="menu_root"
+            name="Restaurant"
+            web_icon="sale_management,static/description/icon.png"
+            sequence="10"/>
+
+    <menuitem id="restaurant_employee_root"
+        name="Employee"
+        parent="menu_root"
+        sequence="42"/>
+
+    <menuitem id="restaurant_employee"
+        name="Employee"
+        parent="menu_root"
+        action="employee_action"
+        sequence="42"/>
+    
+</odoo>

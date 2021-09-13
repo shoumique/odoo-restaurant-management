@@ -1,0 +1,87 @@
+<odoo>
+  <data>
+    <!-- explicit list/tree view definition -->
+
+    <record model="ir.ui.view" id="menu_restaurant_kitchen_tree">
+      <field name="name">restaurant.kitchen.tree</field>
+      <field name="model">restaurant.kitchen</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="chef"/>
+          
+          <!-- <field name="addons"/> -->
+        </tree>
+      </field>
+    </record>
+    
+    <!-- explicit group view definition -->
+
+    <record id="menu_addon" model="ir.ui.view">
+        <field name="name">restaurant.kitchen.form</field>
+        <field name="model">restaurant.kitchen</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="chef"/>
+                            
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    <!-- explicit pivot view definition -->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="kitchen_action">
+      <field name="name">Menu</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">restaurant.kitchen</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hungry enough to create menu ?  
+            </p>
+        </field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!-- 
+    <record model="ir.actions.server" id="restaurant.action_server">
+      <field name="name">restaurant server</field>
+      <field name="model_id" ref="model_restaurant_restaurant"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+   -->
+
+    <menuitem id="menu_root"
+         name="Splot"
+         web_icon="sale_management,static/description/icon.png"
+        sequence="10"/>
+    
+
+    <menuitem id="restaurant_kitchen_menu"
+        name="Kitchen"
+        parent="menu_root"
+        action="kitchen_action"
+
+        sequence="15"/>
+    
+  </data>
+
+  
+
+</odoo>

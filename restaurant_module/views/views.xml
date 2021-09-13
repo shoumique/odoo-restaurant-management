@@ -1,0 +1,145 @@
+<odoo>
+  <data>
+    <!-- explicit list/tree view definition -->
+
+    <record model="ir.ui.view" id="menu_restaurant_tree">
+      <field name="name">restaurant.menu.tree</field>
+      <field name="model">restaurant.menu</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="item"/>
+          <field name="value"/>
+          <field name="food"/>
+          <field name="addon_list_ids" widget="many2many_tags"/>
+          
+          <field name="description"/>
+          <!-- <field name="addons"/> -->
+        </tree>
+      </field>
+    </record>
+    
+    <!-- explicit group view definition -->
+
+    <record id="menu_form" model="ir.ui.view">
+        <field name="name">restaurant.menu.form</field>
+        <field name="model">restaurant.menu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="item"/>
+                            <field name="value"/>
+                            <field name="food"/>
+                            <field name="image"/>
+                        </group>
+                        <group>
+                            <field name="addon_list_ids"/>
+                            <field name="description"/>
+                            
+                            <!-- <field name ="addons"/> -->
+                            <!-- <field name ="stuId"/> -->
+                            <!-- <field name="note"/> -->
+                            <!-- <field name ="enddate"/> -->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_properties_kanban" model="ir.ui.view">
+        <field name="name">restaurant.menu.kanban</field>
+        <field name="model">restaurant.menu</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="item" colors="blue: food=='new'">
+                <field name="item"/>
+                <field name="value"/>
+                <!-- <field name="addons"/> -->
+                <field name="description"/>
+                <progressbar field="item" colors='{"breakfast": "info", "lunch": "warning", "dinner": "success", "snacks": "danger"}'/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card o_real_estate_kanban" style="background-color: #f3e5f5; margin-top: 10px;">
+
+                            <div class="o_kanban_image">
+                                <field name="image" widget="image" class="oe_avtar"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <h2 class="o_kanban_record_title"><field name="item"/></h2>
+                                <ul>
+                                    
+                                    <li>item : <field name="item"/> Menu type</li>
+                                    <li>food : <field name="food"/></li>
+                                    <li>value : <field name="value"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <!-- explicit pivot view definition -->
+
+    <record id="view_properties_pivot" model="ir.ui.view">
+        <field name="name">restaurant.menu.pivot</field>
+        <field name="model">restaurant.menu</field>
+        <field name="arch" type="xml">
+            <pivot string="Menu">
+                <field name="value" type="row"/>
+                <!-- <field name="admissiondate" type="col" interval="day"/> -->
+            </pivot>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="menu_action">
+      <field name="name">Menu</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">restaurant.menu</field>
+      <field name="view_mode">tree,form,kanban,pivot</field>
+      <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hungry enough to create menu ?  
+            </p>
+        </field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="restaurant.action_server">
+      <field name="name">restaurant server</field>
+      <field name="model_id" ref="model_restaurant_restaurant"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+  
+-->
+    <menuitem id="menu_root"
+         name="Splot"
+         web_icon="sale_management,static/description/icon.png"
+        sequence="10"/>
+    
+
+    <menuitem id="restaurant_menu"
+        name="Menu"
+        parent="menu_root"
+        action="menu_action"
+
+        sequence="10"/>
+    
+  </data>
+
+  
+
+</odoo>
