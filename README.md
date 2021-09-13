@@ -37,7 +37,9 @@ Employee Module
 
 Custom Made Restaurant Module
 
-![Screenshot from 2021-09-13 17-37-52](https://user-images.githubusercontent.com/29005077/133077445-426c3ecb-aab8-4451-a3ca-b6a2a3f92889.png)
-![Screenshot from 2021-09-13 17-37-56](https://user-images.githubusercontent.com/29005077/133077447-ff9298e2-3a21-4cb4-b68f-e7d5b32751bd.png)
-![Screenshot from 2021-09-13 17-38-00](https://user-images.githubusercontent.com/29005077/133077450-db1ccd81-5c8d-489b-bc16-8cca5cdc1c40.png)
+![addons](https://user-images.githubusercontent.com/29005077/133082518-d4eab3d9-ccfe-4b14-a10e-46a328088847.png)
+![employee](https://user-images.githubusercontent.com/29005077/133082521-bdaeb11c-c45f-41cb-9718-2db07b3590bc.png)
+![kitchen](https://user-images.githubusercontent.com/29005077/133082523-a437daee-5e4d-431e-857f-c6d2333146fa.png)
+![Menu_list](https://user-images.githubusercontent.com/29005077/133082526-93186dbd-e483-4bcf-ab69-d04f59dd07db.png)
+
 
