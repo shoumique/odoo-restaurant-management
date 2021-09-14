@@ -24,8 +24,16 @@ class RestaurantMenu(models.Model):
     description = fields.Text(string='Note')
     image= fields.Binary(string='Image')
     addon_list_ids = fields.Many2many('restaurant.addon', 'menu_addon_relation', 'restaurant_menu_id', 'addon_id', string='Addons List')
-
-
+    def action_url(self):
+        return {
+            'type':'ir.actions.act_url',
+            'target': 'self',
+            'url': 'http://localhost:8015/web#action=386&model=pos.config&view_type=kanban&cids=1&menu_id=231' ,
+        }
+    def update_invoice_print(self):
+        for record in self:
+            if record.food == 'new':
+                record.food = 'menu_accepted'
     # @api.depends('value')
     # def _value_pc(self):
     #     for record in self:
