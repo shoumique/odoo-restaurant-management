@@ -25,6 +25,12 @@
         <field name="model">restaurant.menu</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_url" string="Open URL" class="btn-primary" 
+                            
+                            type="object"/>
+                    
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -107,24 +113,19 @@
             </p>
         </field>
     </record>
+    <record id="change_status" model="ir.actions.server">
+        <field name="name">Invoice</field>
+        <field name="model_id" ref="model_restaurant_menu" />
+        <field name="binding_model_id" ref="model_restaurant_menu" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">action = record.update_invoice_print()</field>
 
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="restaurant.action_server">
-      <field name="name">restaurant server</field>
-      <field name="model_id" ref="model_restaurant_restaurant"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
     </record>
+
+
   
--->
+
     <menuitem id="menu_root"
          name="Splot"
          web_icon="sale_management,static/description/icon.png"
